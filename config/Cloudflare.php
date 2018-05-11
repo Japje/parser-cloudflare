@@ -2,10 +2,10 @@
 
 return [
     'parser' => [
-        'name'          => 'Comeso',
+        'name'          => 'Cloudflare',
         'enabled'       => true,
         'sender_map'    => [
-            '/abusereply@cloudflare.com/',
+            '/abuse@cloudflare.com/',
         ],
         'body_map'      => [
             //
@@ -20,6 +20,7 @@ return [
             'fields'    => [
                 'IP',
                 'timestamp',
+                'domain',
             ],
         ],
     ],

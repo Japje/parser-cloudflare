@@ -1,0 +1,106 @@
+Delivered-To: abuse@isp.tld
+Received: by 10.107.3.101 with SMTP id 98csp557650iod;
+        Fri, 4 May 2018 15:09:23 -0700 (PDT)
+X-Received: by 2002:a25:29c4:: with SMTP id p187-v6mr17683600ybp.510.1525471522678;
+        Fri, 04 May 2018 15:05:22 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZosoy1gXSMpov+3zGFOpV2i8pYjSbITOWQm2joUCLsyBuwkLYT32iyHtZoPJR9ba1rbrVul
+X-Received: by 2002:a25:29c4:: with SMTP id p187-v6mr17683569ybp.510.1525471521208;
+        Fri, 04 May 2018 15:05:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1525471521; cv=none;
+        d=google.com; s=arc-20160816;
+        b=d2VAn2gpqvl2iSFdzZzPonkWgbtDc+mXC7sbsKx6vjSudHN+Q6a/279HQIBlIwdEaU
+         LjTQi+mBmDf+mfbQLGuOZEjovbtZs1v/Xo2T4ziXMZ+eUc4QPKyg2rvltILd8EfASZ8a
+         62y7Zi8lco63p4pgEyXAPKCc5V17JTc2GxXQpayQtelRtiFfRokvJAEWIEp+r05bVRvO
+         h6SUWk5m5PIU6pI7hUaIRhO5bpa44wqXgz1v2Rd2XiOUAeEQYGZuXBbioKx8V1teGF2x
+         RdomMb9w2l9To30AMVcBxdBXGhv4QQirQqlgvJlp/IgQVAxwK/Suzuc8D7Dvi+QVJFZm
+         ofvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:date:message-id:reply-to:to
+         :subject:from:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=My+hh8f7u9kcTFYzubWFJ+HvSXb8ZCT8rxL9413Opbw=;
+        b=FjiaXBJOWrnjwsu84tXGjQHtwh+4OCFmN1kn4W2rHHeMDBa/734DmS6bkmJEeAn8cP
+         h1yS8mqsFR89saUMIYck4No/ZzdnkSdtQb5ezXFThFSG7BKkNPvai8vKemuf4jvUJpIZ
+         XxPBL1yrU4ynlnI20K1gsZ1Eri+Q2iVzMuHiOhJEPl5x9sJxbdpx2t/jKNVLFbIe/Mv1
+         G2+iZrC9UhUAwsKGaToCvL2FUhmpo5/5SqHeuMVaGq9suEpa+KlT0+gXcI1qPzb2VGGi
+         ILedTm+HckZ6/S2EjcrYOokAs3HWK5Tz0kyRZe6LvrKm0GZ1vQPCa0En8JCCS253h8Qx
+         SilA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=gEBkGaMw;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=Qc//PeYO;
+       spf=pass (google.com: domain of bounce-md_10559331.5aecd920.v1-ffb38079e0914ddd8989e628ebfaeae3@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5aecd920.v1-ffb38079e0914ddd8989e628ebfaeae3@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+Return-Path: <bounce-md_10559331.5aecd920.v1-ffb38079e0914ddd8989e628ebfaeae3@mandrillapp.com>
+Received: from mail17.us4.mandrillapp.com (mail17.us4.mandrillapp.com. [205.201.136.17])
+        by mx.google.com with ESMTPS id c65-v6si4421042ywb.255.2018.05.04.15.05.20
+        for <abuse@isp.tld>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 04 May 2018 15:05:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-md_10559331.5aecd920.v1-ffb38079e0914ddd8989e628ebfaeae3@mandrillapp.com designates 205.201.136.17 as permitted sender) client-ip=205.201.136.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=gEBkGaMw;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=Qc//PeYO;
+       spf=pass (google.com: domain of bounce-md_10559331.5aecd920.v1-ffb38079e0914ddd8989e628ebfaeae3@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5aecd920.v1-ffb38079e0914ddd8989e628ebfaeae3@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mandrill; d=cloudflare.com;
+ h=From:Subject:To:Reply-To:Message-Id:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=abuse@cloudflare.com;
+ bh=My+hh8f7u9kcTFYzubWFJ+HvSXb8ZCT8rxL9413Opbw=;
+ b=gEBkGaMwtUfC62YJLWMWsz1dwfN9g6Af2twT97UF2CH6rjCbLyCrMM1r17pfD7e+l32o4JSkueYY
+   Pi8bNU+On/ymR0IPyG+fol8asVFFXhDGfsTSNx9uf2CxnjdHfP8eZ4UoyX9jmHHQzYUFCwkK961v
+   J5NMk0mo6u18AS/Q7DU=
+Received: from pmta07.mandrill.prod.suw01.rsglab.com (127.0.0.1) by mail17.us4.mandrillapp.com id htjci2174e0f for <abuse@isp.tld>; Fri, 4 May 2018 22:05:20 +0000 (envelope-from <bounce-md_10559331.5aecd920.v1-ffb38079e0914ddd8989e628ebfaeae3@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1525471520; h=From : 
+ Subject : To : Reply-To : Message-Id : Date : MIME-Version : 
+ Content-Type : Content-Transfer-Encoding : From : Subject : Date : 
+ X-Mandrill-User : List-Unsubscribe; 
+ bh=My+hh8f7u9kcTFYzubWFJ+HvSXb8ZCT8rxL9413Opbw=; 
+ b=Qc//PeYOGwjeezlQ4nRMt94zJmi0TD1oWA3BrsVBYRgFcRfG3zOR6rGF6xc5fS26Upd3c3
+ gocLoA0lPZWvei7RF0JgikVBq+d+5mQJAY1BpFCPD2ehszvB6hgB2CBaYwMDdEd8ih5rJLWO
+ Lr0et4PjEf+x/ATTX4Y9jZUQ+/Zhw=
+From: Cloudflare <abuse@cloudflare.com>
+Subject: [8bc5a36f182031b4]: Cloudflare received a DMCA copyright infringement complaint regarding one of your customers.
+Return-Path: <bounce-md_10559331.5aecd920.v1-ffb38079e0914ddd8989e628ebfaeae3@mandrillapp.com>
+Received: from [198.41.144.137] by mandrillapp.com id ffb38079e0914ddd8989e628ebfaeae3; Fri, 04 May 2018 22:05:20 +0000
+X-Php-Originating-Script: 0:email.php
+To: <abuse@isp.tld>
+Reply-To: <abusereply@cloudflare.com>
+Message-Id: <20180504220519.CB001B414922F@smtpout1.cloudflare.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=10559331.ffb38079e0914ddd8989e628ebfaeae3
+X-Mandrill-User: md_10559331
+Date: Fri, 04 May 2018 22:05:20 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Cloudflare received a DMCA copyright infringement complaint regarding:
+example.com
+
+Please be aware Cloudflare is a network provider offering a reverse proxy, pass-through security service. We are not a hosting provider. Cloudflare does not control the content of our customers.
+
+The actual host for example.com is 123.123.123.123. Using the following command, you can confirm the site in question is hosted at that IP address: curl -v -H "Host: example.com" 123.123.123.123/
+
+Below is the complaint we received:
+
+Reporter's Name: Ann Sherman
+Copyright Holder's Name: 
+Reporter's Email Address: takedowns@dmca.com
+Reporter's Company Name: DMCA.com
+Reporter's Telephone Number: 7787470442
+Reporter's Address: 795 Market Street, Victoria Victoria, BC CA
+
+Reported URLs:
+
+	http://example.com/vd/12631283-marc_pruskin_of_adobe_system_masturbating_781_820-8246.html
+
+Original Work: The following site link contains content that has been taken without the permission of the copyright owner who is requesting the immediate removal of this infringement: 
+
+http://example.com/vd/12631283-marc_pruskin_of_adobe_system_masturbating_781_820-8246.html
+
+
+Please address this issue with your customer.
+
+Regards,
+
+Cloudflare Abuse
