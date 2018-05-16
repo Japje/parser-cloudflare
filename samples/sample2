@@ -1,0 +1,97 @@
+Delivered-To: abuse@isp.tld
+Received: by 10.107.58.9 with SMTP id h9csp1426439ioa;
+        Wed, 24 Jan 2018 16:20:16 -0800 (PST)
+X-Google-Smtp-Source: AH8x225SvcwftZvD1jl43wMYbdRyHbrryhjtG04LCgCnsRm/GFxofuSqbsjG3rOIeooaFqzaDlFi
+X-Received: by 10.37.15.86 with SMTP id 83mr1724093ybp.378.1516839616343;
+        Wed, 24 Jan 2018 16:20:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1516839616; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tqvy15YoUj1YEUhx54uy631eysBhHjTS6UbFnemjIdFTWcBDWZmQhQmS88DjT4hFo8
+         BZkLI33S5mC+neBirYF37fKUgiMYLcUjGyT/VDTEB8gsXVjZQgcSw4Xc0nJTXyS8Gwqa
+         ox+oj/KD7sAh/pmpyFFE0f0pzHGSBrSL5zXa/VqYb0LnMxojNf3C9LTwMFUZlvENkncC
+         A1JtxtfvBFBD7DhuK4T1YQ0LzImkVnlIVENmdFnX/qK7WX3P+dsLQGn3/Q1g7uogxgIv
+         YN4v3DHZae2dHQuLN5evc6cEcySIPeVE1hRl+khHSWfwReZQdqJPszIrSUtEaRHjnFIl
+         IAwA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:date:message-id:reply-to:to
+         :subject:from:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=jQJcJHeSpmYQNk8cbGXquUoAyt5GyLeZ6Nx0esWZ7PU=;
+        b=V1scW/ftX8wxdxu1JkJMhPhKksYUgvjZiknYdShK0sL0C5oZGq4NiM2ZzZOaal4Q5X
+         nH3lUiHrXKt3qh1Z8LRB3eMgHSNn/PEcnyvLSJ0E/24+EKKuUmgqgrhJvDCKiI3uL3Js
+         IBx0sQDWeqwiTV/Oy85LjDVRIMd9KPHfk2KloCIqHK/QulOtKKToaPCq9EL9Z/bX3mJi
+         82SlxtlLrngt7Pz10Vm5mlq+kFA7Qnj98tMTA5tZrg6APjduW1THOfebqicd7uo5GOO7
+         ZLjXRqpmWMbaCbd33qkDQGpSe1p658413Q2A/kSHBxhkoZPbfcD4Oo7uLo92n20LMJaT
+         1h9Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=AQ6sb5Nj;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=QVQ7gSVt;
+       spf=pass (google.com: domain of bounce-md_10559331.5a6922bf.v1-655645af5a6e42e2800dac6340b49351@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5a6922bf.v1-655645af5a6e42e2800dac6340b49351@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+Return-Path: <bounce-md_10559331.5a6922bf.v1-655645af5a6e42e2800dac6340b49351@mandrillapp.com>
+Received: from mail17.us4.mandrillapp.com (mail17.us4.mandrillapp.com. [205.201.136.17])
+        by mx.google.com with ESMTPS id h2si1364521qkc.74.2018.01.24.16.20.15
+        for <abuse@isp.tld>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 24 Jan 2018 16:20:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-md_10559331.5a6922bf.v1-655645af5a6e42e2800dac6340b49351@mandrillapp.com designates 205.201.136.17 as permitted sender) client-ip=205.201.136.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=AQ6sb5Nj;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=QVQ7gSVt;
+       spf=pass (google.com: domain of bounce-md_10559331.5a6922bf.v1-655645af5a6e42e2800dac6340b49351@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5a6922bf.v1-655645af5a6e42e2800dac6340b49351@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mandrill; d=cloudflare.com; h=From:Subject:To:Reply-To:Message-Id:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=abuse@cloudflare.com; bh=jQJcJHeSpmYQNk8cbGXquUoAyt5GyLeZ6Nx0esWZ7PU=; b=AQ6sb5NjObKvByPwSh9MzmZIWIVEDnDIHTf+fib4pvZif0UxQVq10SwhdVXzsKO6A2PHNja+g6i9
+   6yraBIuakGjM/yixxRhlOKlvjEQtnDSN3VzrbqdLWmQ0Y0eXjqb6xmyVjh/Iy0ambI7v8YNJhLsX
+   aVrI2KynnNP/SKaEmRg=
+Received: from pmta07.mandrill.prod.suw01.rsglab.com (127.0.0.1) by mail17.us4.mandrillapp.com id hd4hc0174e09 for <abuse@isp.tld>; Thu, 25 Jan 2018 00:20:15 +0000 (envelope-from <bounce-md_10559331.5a6922bf.v1-655645af5a6e42e2800dac6340b49351@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com;
+  i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1516839615; h=From :
+  Subject : To : Reply-To : Message-Id : Date : MIME-Version :
+  Content-Type : Content-Transfer-Encoding : From : Subject : Date :
+  X-Mandrill-User : List-Unsubscribe;
+  bh=jQJcJHeSpmYQNk8cbGXquUoAyt5GyLeZ6Nx0esWZ7PU=;
+  b=QVQ7gSVtHiKq8tRH3HrPQMfCcwB4MWsphWrinWasNpCC+mS/Z8oeCv5SNpwBwepKtVeUm6 oO0Em07DL0zSEZGcEgTFvkSqaZ2mTDUp4OulWnutrG3ORu2PqsCdUJMFcrFSjAHlbPjm1MPD 3STGMA/CcrRTGoUBY5cfOzmSsq3Tg=
+From: Cloudflare <abuse@cloudflare.com>
+Subject: [e8906dbfda70ed24]: Cloudflare received a DMCA copyright infringement complaint regarding one of your customers.
+Return-Path: <bounce-md_10559331.5a6922bf.v1-655645af5a6e42e2800dac6340b49351@mandrillapp.com>
+Received: from [162.158.65.216] by mandrillapp.com id 655645af5a6e42e2800dac6340b49351; Thu, 25 Jan 2018 00:20:15 +0000
+X-Php-Originating-Script: 0:email.php
+To: <abuse@isp.tld>
+Reply-To: <abusereply@cloudflare.com>
+Message-Id: <20180125002014.D6B1B2A1E8017@smtpout1.cloudflare.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=10559331.655645af5a6e42e2800dac6340b49351
+X-Mandrill-User: md_10559331
+Date: Thu, 25 Jan 2018 00:20:15 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Cloudflare received a DMCA copyright infringement complaint regarding:
+if-she-weighs-as-much-as-a-duck.tld
+
+Please be aware Cloudflare is a network provider offering a reverse proxy, pass-through security service. We are not a hosting provider. Cloudflare does not control the content of our customers.
+
+The actual host for if-she-weighs-as-much-as-a-duck.tld is 192.168.1.13. Using the following command, you can confirm the site in question is hosted at that IP address: curl -v -H "Host: if-she-weighs-as-much-as-a-duck.tld" 192.168.1.13/
+
+Below is the complaint we received:
+
+Reporter's Name: Ariel Mendez
+Copyright Holder's Name: 
+Reporter's Email Address: copyright5@ricomanagement.com
+Reporter's Company Name: Rico Management
+Reporter's Telephone Number: (951) 266-6929
+Reporter's Address: 19510 Van Buren Blvd Riverside, California US
+
+Reported URLs:
+
+	http://if-she-weighs-as-much-as-a-duck.tld/filmy/188-za-propastyu-vo-rzhi-film-2017m.html
+
+Original Work: http://www.ifcfilms.com/films/rebel-in-the-rye
+
+
+Please address this issue with your customer.
+
+Regards,
+
+Cloudflare Abuse

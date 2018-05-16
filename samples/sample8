@@ -1,0 +1,134 @@
+Delivered-To: abuse@isp.tld
+Received: by 10.107.44.88 with SMTP id s85csp2068087ios;
+        Sat, 7 Apr 2018 11:27:00 -0700 (PDT)
+X-Received: by 10.55.212.205 with SMTP id s74mr42992379qks.244.1523125380144;
+        Sat, 07 Apr 2018 11:23:00 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx488E1Ymf9FmLizY+7VrxP+etMezuqu52UBA+tINAbt2ep0d3duYXZYeFmgJwvzkJzh8aoDs
+X-Received: by 10.55.212.205 with SMTP id s74mr42992288qks.244.1523125378472;
+        Sat, 07 Apr 2018 11:22:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1523125378; cv=none;
+        d=google.com; s=arc-20160816;
+        b=uJ8zAX8N8RNyCyIIAdp1CvTW6kojNJp33eM12pUL8pUCxBrqC8Mk09P3jjHdxufGbz
+         ZOK/G9FDuvWpsteYzriqXUaKxLZB0o/+V6GHWqt74GAKFNfTJJx9SmHUplP2JBSxyrox
+         HygPd2g8gXOQ4Hy7gQdEEb52SADd1bdOOICc/fB6ezVPCiGdxZCD4Wit8qoDiD+GG1ve
+         yAzbP7QcuwL2kWxKI6zPuB4s8cBHNDCYeWnsznoJiecxLpSW6ci68xBSrPUcqz6iUbjn
+         1Stzxoy5gMoc+329bYG3RQG0aQc7oLkqnmy8oCkUfw8kVPU8AqChf1sDGm/XCiKyKGBl
+         g0/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:date:message-id:reply-to:to
+         :subject:from:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=I+VHWfKkYGsN24xckqTE19rkx/ExnBjKevDCpBD/Lx4=;
+        b=w0bjlZwbaninMQtEjIohdZtoCZ3HGrIIH5vh59tQz8tSnTC9JQOeiAZl0nFBy9IKgW
+         NHRpbMQN6144kpGXpO3+bSl/Kx5uoosWpZPbuSd/0QS/N8kJr1FHKFOoY/RZoJXuz4EG
+         KIBUVyUQMLAcesXky2FaFU+0TbS+c6W1puXC1Ft/Nlz5CXV/zn5dUSxXF0mfMMpCUjGY
+         FY3zWSeNDhaNsC83s2SowDQAf8Hjf8pLZ07Nz3EIQoCsZuum3H+D1whuAfAHURuOV74y
+         aofP1nAA4kSfNe5qS7Ckbdf3bl9DuL7MxYhuwXyxgFDyZ8DGqGV3lQKriHf67bG2CeA0
+         qUng==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=egxeG9qG;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=D8jHksrg;
+       spf=pass (google.com: domain of bounce-md_10559331.5ac90c81.v1-65cb7281b03a4b9ba4b8c4a5286823df@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5ac90c81.v1-65cb7281b03a4b9ba4b8c4a5286823df@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+Return-Path: <bounce-md_10559331.5ac90c81.v1-65cb7281b03a4b9ba4b8c4a5286823df@mandrillapp.com>
+Received: from mail17.us4.mandrillapp.com (mail17.us4.mandrillapp.com. [205.201.136.17])
+        by mx.google.com with ESMTPS id z23si3329100qto.449.2018.04.07.11.22.57
+        for <abuse@isp.tld>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 07 Apr 2018 11:22:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-md_10559331.5ac90c81.v1-65cb7281b03a4b9ba4b8c4a5286823df@mandrillapp.com designates 205.201.136.17 as permitted sender) client-ip=205.201.136.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=egxeG9qG;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=D8jHksrg;
+       spf=pass (google.com: domain of bounce-md_10559331.5ac90c81.v1-65cb7281b03a4b9ba4b8c4a5286823df@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5ac90c81.v1-65cb7281b03a4b9ba4b8c4a5286823df@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mandrill; d=cloudflare.com; h=From:Subject:To:Reply-To:Message-Id:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=abuse@cloudflare.com; bh=I+VHWfKkYGsN24xckqTE19rkx/ExnBjKevDCpBD/Lx4=; b=egxeG9qGZHRCcPRgNnG9ZRyt8Hv+lZ1AQ3ZTz3hFfzgEiqdG4JlCXhFj+vqbQa00UpypIjmspwdW
+   5j5GxzUpYgSqHo+3n7raI7OY0J+K5WtAw7vTZsCVWtVd8ZZwMEgiF5ligXstWf9JfYmEy4GztAUi
+   LyJp25ePSObLJvl7/d8=
+Received: from pmta07.mandrill.prod.suw01.rsglab.com (127.0.0.1) by mail17.us4.mandrillapp.com id hp4684174e0a for <abuse@isp.tld>; Sat, 7 Apr 2018 18:22:57 +0000 (envelope-from <bounce-md_10559331.5ac90c81.v1-65cb7281b03a4b9ba4b8c4a5286823df@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com;
+  i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1523125377; h=From :
+  Subject : To : Reply-To : Message-Id : Date : MIME-Version :
+  Content-Type : Content-Transfer-Encoding : From : Subject : Date :
+  X-Mandrill-User : List-Unsubscribe;
+  bh=I+VHWfKkYGsN24xckqTE19rkx/ExnBjKevDCpBD/Lx4=;
+  b=D8jHksrgxkEk29peujwXukiGr1Uy8RvSNqSNkMVuRjy3PORkkb0RIDqy2pxfxKYEzU9dL0 nfPywPXfjK7TiumdhmMAoZvEUzORqKhbLoCwy0eqPfgOBooepN5P7gddjByGEiRzf6Jafaoh tYPb+kQt3hF8DuLHMWB+sYE/0CoPI=
+From: Cloudflare <abuse@cloudflare.com>
+Subject: [f292ccd7ce95c621]: Cloudflare received a DMCA copyright infringement complaint regarding one of your customers.
+Return-Path: <bounce-md_10559331.5ac90c81.v1-65cb7281b03a4b9ba4b8c4a5286823df@mandrillapp.com>
+Received: from [198.41.144.137] by mandrillapp.com id 65cb7281b03a4b9ba4b8c4a5286823df; Sat, 07 Apr 2018 18:22:57 +0000
+X-Php-Originating-Script: 0:email.php
+To: <abuse@isp.tld>
+Reply-To: <abusereply@cloudflare.com>
+Message-Id: <20180407182254.C964D73231EE3@smtpout1.cloudflare.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=10559331.65cb7281b03a4b9ba4b8c4a5286823df
+X-Mandrill-User: md_10559331
+Date: Sat, 07 Apr 2018 18:22:57 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Cloudflare received a DMCA copyright infringement complaint regarding:
+bad-domain-serving-naughty-content.com
+
+Please be aware Cloudflare is a network provider offering a reverse proxy, =
+pass-through security service. We are not a hosting provider. Cloudflare do=
+es not control the content of our customers.
+
+The actual host for bad-domain-serving-naughty-content.com is 10.123.123.19. Using the following comm=
+and, you can confirm the site in question is hosted at that IP address: cur=
+l -v -H "Host: bad-domain-serving-naughty-content.com" 10.123.123.19/
+
+Below is the complaint we received:
+
+Reporter's Name: Sergei Poloz
+Copyright Holder's Name:=20
+Reporter's Email Address: copyright@vindex.com.ua
+Reporter's Company Name: Vindex Law Firm LLC.
+Reporter's Telephone Number: +38 (044) 379 1436
+Reporter's Address: 5 Sklyarenko str., Kiev, 04073, Ukraine Kiev, Kiev UA
+
+Reported URLs:
+
+=09https://bad-domain-serving-naughty-content.com/461-esh-protiv-zloveschih-mertvecov-3-sezon-1-6-seri=
+ya-smotret-onlayn.html
+
+Original Work: VIDEO CONTENT LIBRARY LIMITED is the copyright holder of all=
+ intellectual property rights in and to the following Ash vs Evil Dead (201=
+5-2018),  original URL (official): http://www.imdb.com/title/tt4189022/ (he=
+reinafter =E2=80=93 =E2=80=9Ccontent=E2=80=9D).
+
+We have discovered that content is used without authorization of the copyri=
+ght holder on the website bad-domain-serving-naughty-content.com. The list of allegedly infringing URL=
+s you will find below.=20
+
+Subject to all the above, we demand TO IMMEDIATELY STOP THE USE OF CONTENT,=
+ whereas it is used unlawfully and with violation of intellectual property =
+rights of the copyright holder.=20
+
+Website operator may USE LEGAL EMBED PLAYER FROM THE OFFICIAL CHANNEL OF CO=
+PYRIGHT HOLDER IN YOUTUBE, and in such a case this letter shall be consider=
+ed as the authorization to use content on your website provided that the em=
+bed player from the official channel of the copyright holder in YouTube.=20
+
+In case of failure to comply with the above demand, gives copyright holder =
+the right to take protective measures against the party involved in the vio=
+lation of copyright holder=E2=80=99s rights, including by taking pre-action=
+ remedies via courts.=20
+
+Website operator and/or Web Hosting Company may be held liable for failing =
+to expeditiously comply with the takedown demands set forth herein.
+
+Please contact us should you have any questions.=20
+
+Documents:
+http://drive.vindex.com.ua/cz7Kop24/y3b_VCL_letter_Vindex_9.pdf
+http://drive.vindex.com.ua/cz7Kop24/9M5_PoA-VCLL-Vindex.pdf
+
+
+Please address this issue with your customer.
+
+Regards,
+
+Cloudflare Abuse

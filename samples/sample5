@@ -1,0 +1,138 @@
+Delivered-To: abuse@isp.tld
+Received: by 10.107.3.101 with SMTP id 98csp207925iod;
+        Tue, 24 Apr 2018 20:25:02 -0700 (PDT)
+X-Received: by 2002:a25:b21e:: with SMTP id i30-v6mr15049247ybj.7.1524626462253;
+        Tue, 24 Apr 2018 20:21:02 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx49ttNHX15QOgZotfX5jtGYHZc38V+RJF+oapGv02eQgHT3KmtavoxeyR3fh2S5XfXLaM4Hy
+X-Received: by 2002:a25:b21e:: with SMTP id i30-v6mr15049224ybj.7.1524626460766;
+        Tue, 24 Apr 2018 20:21:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524626460; cv=none;
+        d=google.com; s=arc-20160816;
+        b=j+h2QTm4KyLgbX30+HFFgRKKIE52zBIqMn/CCHdlWad5tCNaFOWrt9PQS93yePwCMH
+         +yvOMmbb/lGzrb+8FQPIDFxjQOWxTWcwCu6XlHa+L3KvdP+6trMcRXsdGUFQfie+DVl6
+         jWtm3fc0Tg6h1nwpCa23s8Oz5wPcXD5j/T2XkOZ3zfOEwn4/ZGg618T2AIkHAjttSoUb
+         6GOhyaHjgJUjIodLrOfGNJcPJYgSCbC/rIFqdzZwTQ6IC2IJcp39sONNXuBAI3tyQQAP
+         lvvqLNUzjoNZ7hfL+l9+h817i8ZaSraC/ydxmaedEoEm7Y/hN7XE5RH4Zpg2lpvB+P5w
+         HvLQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:date:message-id:reply-to:to
+         :subject:from:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=yzZNEelEFZwO/qr5KwhQncM+oSf4lH5hwSeLdVk0XEA=;
+        b=fdnetiy0OtYFXVoVL7cBrs7pvU79A4A2tCXelCz+ySE6EX353mfzXhzm5rh3ekivth
+         iL8rP3IB3AL8HGjTLYRF24ypmLBocmUJsKaviNqbvd2yVpCVtz6d+AUuAHCO14qNEmC/
+         rfKt61c94lawRckSGzCpu6MmBI+SS3NBmCqASLMEdF2URLWx9/xISvXzIvEH5D7JblpX
+         qzDw4E4NyoynxOEEGRfxwrtFDtujYV/tfwe85bqG5DdjdB5foi+NTSRpIxnMubvBHZ80
+         rdegR61hTd+Sh7c7RPnKxouSnbCFsEAGxOtgOO95kpFLFR53RAK6wL5IxXqrX+oZwLM0
+         k/8Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=R9nbx/f+;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=BKsknNTa;
+       spf=pass (google.com: domain of bounce-md_10559331.5adff41c.v1-268efb894c0843abaa6e65737ac6a6c5@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5adff41c.v1-268efb894c0843abaa6e65737ac6a6c5@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+Return-Path: <bounce-md_10559331.5adff41c.v1-268efb894c0843abaa6e65737ac6a6c5@mandrillapp.com>
+Received: from mail17.us4.mandrillapp.com (mail17.us4.mandrillapp.com. [205.201.136.17])
+        by mx.google.com with ESMTPS id i62-v6si794632ywb.534.2018.04.24.20.21.00
+        for <abuse@isp.tld>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 24 Apr 2018 20:21:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-md_10559331.5adff41c.v1-268efb894c0843abaa6e65737ac6a6c5@mandrillapp.com designates 205.201.136.17 as permitted sender) client-ip=205.201.136.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=R9nbx/f+;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=BKsknNTa;
+       spf=pass (google.com: domain of bounce-md_10559331.5adff41c.v1-268efb894c0843abaa6e65737ac6a6c5@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5adff41c.v1-268efb894c0843abaa6e65737ac6a6c5@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mandrill; d=cloudflare.com; h=From:Subject:To:Reply-To:Message-Id:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=abuse@cloudflare.com; bh=yzZNEelEFZwO/qr5KwhQncM+oSf4lH5hwSeLdVk0XEA=; b=R9nbx/f+bhLc7C/8hJ4ctEVfHgXDe9My5EIRs9lFwOwo2UY9YavZTCaXqRmPJjVVft6JjUjrq79/
+   S73SRbNNoOHkJFLKcz60gu0+mqsxwTUiS96p38OjBPYF7pK7Yq2e1w7LNflSK3pMMFtmocG5stYA
+   ccmFskxtYG92CYdkKzM=
+Received: from pmta07.mandrill.prod.suw01.rsglab.com (127.0.0.1) by mail17.us4.mandrillapp.com id hrvq1o174e0q for <abuse@isp.tld>; Wed, 25 Apr 2018 03:21:00 +0000 (envelope-from <bounce-md_10559331.5adff41c.v1-268efb894c0843abaa6e65737ac6a6c5@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com;
+  i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1524626460; h=From :
+  Subject : To : Reply-To : Message-Id : Date : MIME-Version :
+  Content-Type : Content-Transfer-Encoding : From : Subject : Date :
+  X-Mandrill-User : List-Unsubscribe;
+  bh=yzZNEelEFZwO/qr5KwhQncM+oSf4lH5hwSeLdVk0XEA=;
+  b=BKsknNTawilrTedSYOsSv/KtZuOcIAvu2exAY5yWfen/rhzVU0OB/hZOw2rTM5NM5Vh95c n/gGxKio7I+X7iKFsOK6/vtsc3AN4mjeZ2bxQzrkOTN1zvLVsEoYPejn8yhQMB+cZyH99/Ri z7ykgQwa0OCHl9LwR6zpPuc9JsV2Q=
+From: Cloudflare <abuse@cloudflare.com>
+Subject: [65f257f84f0f3d73]: Cloudflare received a DMCA copyright infringement complaint regarding one of your customers.
+Return-Path: <bounce-md_10559331.5adff41c.v1-268efb894c0843abaa6e65737ac6a6c5@mandrillapp.com>
+Received: from [162.158.65.247] by mandrillapp.com id 268efb894c0843abaa6e65737ac6a6c5; Wed, 25 Apr 2018 03:21:00 +0000
+X-Php-Originating-Script: 0:email.php
+To: <abuse@isp.tld>
+Reply-To: <abusereply@cloudflare.com>
+Message-Id: <20180425032059.A3925C982AE78@smtpout1.cloudflare.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=10559331.268efb894c0843abaa6e65737ac6a6c5
+X-Mandrill-User: md_10559331
+Date: Wed, 25 Apr 2018 03:21:00 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Cloudflare received a DMCA copyright infringement complaint regarding:
+father-smelled-of-elderberries.org
+
+Please be aware Cloudflare is a network provider offering a reverse proxy, =
+pass-through security service. We are not a hosting provider. Cloudflare do=
+es not control the content of our customers.
+
+The actual host for father-smelled-of-elderberries.org is 10.0.0.254. Using the followi=
+ng command, you can confirm the site in question is hosted at that IP addre=
+ss: curl -v -H "Host: father-smelled-of-elderberries.org" 10.0.0.254/
+
+Below is the complaint we received:
+
+Reporter's Name: Sergei Poloz
+Copyright Holder's Name:=20
+Reporter's Email Address: copyright@vindex.com.ua
+Reporter's Company Name: Vindex Law Firm LLC.
+Reporter's Telephone Number: +38 (044) 379 1436
+Reporter's Address: 5 Sklyarenko str., Kiev, 04073, Ukraine Kiev, Kiev UA
+
+Reported URLs:
+
+=09http://father-smelled-of-elderberries.org/online-bigcinema-720/456240706--142735069/
+
+Original Work: VIDEO CONTENT LIBRARY LIMITED is the copyright holder of all=
+ intellectual property rights in and to the following Maya&#039;s Secret (T=
+V series 2017, original title &#039;=D0=A1=D0=B5=D0=BA=D1=80=D0=B5=D1=82 =
+=D0=9C=D0=B0=D0=B9=D1=8F&#039;),  original URL (official): http://www.starm=
+ediafilm.com/ru/serial/sekret_majya (hereinafter =E2=80=93 =E2=80=9Ccontent=
+=E2=80=9D).
+
+We have discovered that content is used without authorization of the copyri=
+ght holder on the website father-smelled-of-elderberries.org.=20
+
+Subject to all the above, we demand TO IMMEDIATELY STOP THE USE OF CONTENT,=
+ whereas it is used unlawfully and with violation of intellectual property =
+rights of the copyright holder. In case of failure to comply with the above=
+ demand, gives copyright holder the right to take protective measures again=
+st the party involved in the violation of copyright holder=E2=80=99s rights=
+, including by taking pre-action remedies via courts.=20
+
+You may be held liable for failing to expeditiously comply with the takedow=
+n demands set forth herein.
+
+On behalf of the respective owner of the exclusive rights to the copyrighte=
+d material at issue in this notice, I hereby state, pursuant to the Digital=
+ Millennium Copyright Act, Title 17 United States Code Section 512, that I =
+have a good faith belief that use of the material in the manner complained =
+of is not authorized by the copyright owners, their respective agents, or t=
+he law.
+
+I hereby certify under penalty of perjury that the information in this noti=
+ce is accurate and that we are authorized to act on behalf of the owners of=
+ the exclusive rights being infringed as set forth in this notification.
+
+Please contact us should you have any questions.=20
+
+Documents:
+http://drive.vindex.com.ua/cz7Kop24/my3_PoA-VCLL-Vindex.pdf
+http://drive.vindex.com.ua/cz7Kop24/Sti_VCLL-feb-2018.pdf
+
+
+Please address this issue with your customer.
+
+Regards,
+
+Cloudflare Abuse

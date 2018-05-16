@@ -1,0 +1,148 @@
+Delivered-To: abuse@isp.tld
+Received: by 10.107.3.101 with SMTP id 98csp304305iod;
+        Wed, 18 Apr 2018 20:24:20 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx4+hZASIW3gSb5+tfcSbtvfOnuYOT7TycddRof3bXS415/Y1apliYFRPicGDQQIuIg4E3EAI
+X-Received: by 2002:a81:9811:: with SMTP id p17-v6mr2812056ywg.163.1524108260200;
+        Wed, 18 Apr 2018 20:24:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524108260; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VWbK5T12mjqgDJW77gYihixlCMK+McaPVU+z/ICtSaiDBWeE/3iLR7RnGBDLMHsU3v
+         BGczlGhQQILmUr7/Z1erZ08h01WjRckPbB/w1ad0/t2d4RKPkzlPQuaFZzJecZONHvuK
+         MPOygqusfhsrw20QGbYeUQrvW+l+a1NNaHpMCV2qEkMvRQRoquhge0vc99vFGXQIC1BH
+         ppNc7jUZ8wC8jqVteum37b7sXY/crxzQOL0ycVS2G2siyq5M5RucQiaPtG0u8UFj9izW
+         mBw+cGfFY0ev/pOl0MTQGGxoBm0tZPtlEEBk3FAn6F2jB2AUeEwOjVK5A+7Gutw3Mc4m
+         t+dQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:date:message-id:reply-to:to
+         :subject:from:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=+ivMTiZD/UsnBdJHJUd4+Eze7DEDke8iKwyKUwGP0BM=;
+        b=atGNGMAfRelr7BqzG5Q9hvwpDMFAmwvPKOhHTQ6WvnjAlsRLSB/Uf2CJg0BCqYEX1t
+         jiTZZrOi1e+Jpdth2U+FBTfo4HhAqgZf/iyqT+ACRxzWKboINxqIh8Y5UWNRSxFwRK87
+         tGPin9Gbax8ZwIvs0qDIH17/iR6kDjGL4gwmsH4YUbVGygAZ4uXITRRwiFc8qa+2aGyR
+         OOkZJNhisKvqDqEGTC1glKnlYDMDJFn1cgqXyKrOkVLKOCu8Hs4ZWppliOH8ULgnS2WW
+         6hQKNpBoNSQlORPOWdw/9Iq/NrhsviYulsFajD15f++xogJUZCnEsgmBEMuiDu7F25Ex
+         FpKg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=KjpYwKWI;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=mSt0vJmk;
+       spf=pass (google.com: domain of bounce-md_10559331.5ad80be3.v1-fe667f5cb5e046a1857a542628dfd909@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5ad80be3.v1-fe667f5cb5e046a1857a542628dfd909@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+Return-Path: <bounce-md_10559331.5ad80be3.v1-fe667f5cb5e046a1857a542628dfd909@mandrillapp.com>
+Received: from mail17.us4.mandrillapp.com (mail17.us4.mandrillapp.com. [205.201.136.17])
+        by mx.google.com with ESMTPS id r189-v6si672953ywr.445.2018.04.18.20.24.20
+        for <abuse@isp.tld>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 18 Apr 2018 20:24:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-md_10559331.5ad80be3.v1-fe667f5cb5e046a1857a542628dfd909@mandrillapp.com designates 205.201.136.17 as permitted sender) client-ip=205.201.136.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=KjpYwKWI;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=mSt0vJmk;
+       spf=pass (google.com: domain of bounce-md_10559331.5ad80be3.v1-fe667f5cb5e046a1857a542628dfd909@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5ad80be3.v1-fe667f5cb5e046a1857a542628dfd909@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mandrill; d=cloudflare.com; h=From:Subject:To:Reply-To:Message-Id:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=abuse@cloudflare.com; bh=+ivMTiZD/UsnBdJHJUd4+Eze7DEDke8iKwyKUwGP0BM=; b=KjpYwKWIqSqf7Je2radeUbbkr4HW3xh6Ri6ifVgASMOJA7qUezw30YT3RW7hta1rTfQRRsCXZAGz
+   APGgQPSG+0dvx9XGe858govw+VLKEsiVo9hR/0UAQdwXQJTO5C5aPnykqiPzSarA6JzjprOTuoc/
+   daxWm9+1XVMDbaDF+y4=
+Received: from pmta07.mandrill.prod.suw01.rsglab.com (127.0.0.1) by mail17.us4.mandrillapp.com id hr05u8174e0l for <abuse@isp.tld>; Thu, 19 Apr 2018 03:24:20 +0000 (envelope-from <bounce-md_10559331.5ad80be3.v1-fe667f5cb5e046a1857a542628dfd909@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com;
+  i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1524108259; h=From :
+  Subject : To : Reply-To : Message-Id : Date : MIME-Version :
+  Content-Type : Content-Transfer-Encoding : From : Subject : Date :
+  X-Mandrill-User : List-Unsubscribe;
+  bh=+ivMTiZD/UsnBdJHJUd4+Eze7DEDke8iKwyKUwGP0BM=;
+  b=mSt0vJmkSLc1OO6rRBfdRffqMFM6M/zUL15KuI+whxNKHKjhTSYS/I/P9kdSEcQibl5Wdo uJi3I1Oz3Kh+fZAE2QKzTgDaPr3iw5bCqIDjSbfokjZS2DqbuNDIa8t9tVgfKMS/zpgkxwUZ Rlq1orld19ATDTLC9vsbMFuVtPFPI=
+From: Cloudflare <abuse@cloudflare.com>
+Subject: [835bdac18c80c84a]: Cloudflare received a DMCA copyright infringement complaint regarding one of your customers.
+Return-Path: <bounce-md_10559331.5ad80be3.v1-fe667f5cb5e046a1857a542628dfd909@mandrillapp.com>
+Received: from [162.158.65.247] by mandrillapp.com id fe667f5cb5e046a1857a542628dfd909; Thu, 19 Apr 2018 03:24:19 +0000
+X-Php-Originating-Script: 0:email.php
+To: <abuse@isp.tld>
+Reply-To: <abusereply@cloudflare.com>
+Message-Id: <20180419032419.B9E1EB579CDD4@smtpout1.cloudflare.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=10559331.fe667f5cb5e046a1857a542628dfd909
+X-Mandrill-User: md_10559331
+Date: Thu, 19 Apr 2018 03:24:19 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Cloudflare received a DMCA copyright infringement complaint regarding:
+motherhelp.info
+
+Please be aware Cloudflare is a network provider offering a reverse proxy, =
+pass-through security service. We are not a hosting provider. Cloudflare do=
+es not control the content of our customers.
+
+The actual host for motherhelp.info is 192.168.123.123. Using the following =
+command, you can confirm the site in question is hosted at that IP address:=
+ curl -v -H "Host: domain-with-naughty-stuff-on-it.com" 192.168.123.123/
+
+Below is the complaint we received:
+
+Reporter's Name: Sergei Poloz
+Copyright Holder's Name:=20
+Reporter's Email Address: copyright@vindex.com.ua
+Reporter's Company Name: Vindex Law Firm LLC.
+Reporter's Telephone Number: +38 (044) 379 1436
+Reporter's Address: 5 Sklyarenko str., Kiev, 04073, Ukraine Kiev, Kiev UA
+
+Reported URLs:
+
+=09http://domain-with-naughty-stuff-on-it.com/online-hd-720/456243354-187350425/
+
+Original Work: VIDEO CONTENT LIBRARY LIMITED is the copyright holder of all=
+ intellectual property rights in and to the following The Good Doctor (TV S=
+eries 2017),  original URL (official): http://www.imdb.com/title/tt6470478/=
+ (hereinafter =E2=80=93 =E2=80=9Ccontent=E2=80=9D).
+
+We have discovered that content is used without authorization of the copyri=
+ght holder on the website motherhelp.info. The list of allegedly infringing=
+ URLs you will find below.=20
+
+Subject to all the above, we demand TO IMMEDIATELY STOP THE USE OF CONTENT,=
+ whereas it is used unlawfully and with violation of intellectual property =
+rights of the copyright holder.=20
+
+In case of failure to comply with the above demand, gives copyright holder =
+the right to take protective measures against the party involved in the vio=
+lation of copyright holder=E2=80=99s rights, including by taking pre-action=
+ remedies via courts.=20
+
+Website operator and/or Web Hosting Company may be held liable for failing =
+to expeditiously comply with the takedown demands set forth herein.
+
+On behalf of the respective owner of the exclusive rights to the copyrighte=
+d material at issue in this notice, I hereby state, pursuant to the Digital=
+ Millennium Copyright Act, Title 17 United States Code Section 512, that I =
+have a good faith belief that use of the material in the manner complained =
+of is not authorized by the copyright owners, their respective agents, or t=
+he law.
+
+I hereby certify under penalty of perjury that the information in this noti=
+ce is accurate and that we are authorized to act on behalf of the owners of=
+ the exclusive rights being infringed as set forth in this notification.
+
+Please contact us should you have any questions.=20
+
+Documents:
+http://drive.vindex.com.ua/cz7Kop24/vDy_PoA-VCLL-Vindex.pdf
+http://drive.vindex.com.ua/cz7Kop24/_S5_VCL-Amedia.pdf
+
+
+Respectfully,
+
+Sergei Poloz
+Senior Lawyer=20
+
+Vindex Law Firm LLC.
+5 Sklyarenko str., Kiev, 04073, Ukraine
+E-mail: copyright@vindex.com.ua
+Tel. / Fax: +38 (044) 379 1436
+
+
+Please address this issue with your customer.
+
+Regards,
+
+Cloudflare Abuse

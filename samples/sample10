@@ -1,0 +1,97 @@
+Delivered-To: abuse@isp.tld
+Received: by 10.107.58.9 with SMTP id h9csp1127276ioa;
+        Tue, 30 Jan 2018 06:30:16 -0800 (PST)
+X-Google-Smtp-Source: AH8x227E3ljVdr8BOsgSbfbNmN/tD1yOWgVCy327Oso/CoOTYRG0yHQZE8uoGwTzZe4Ge10EaUMc
+X-Received: by 10.55.42.143 with SMTP id q15mr42101009qkq.206.1517322616126;
+        Tue, 30 Jan 2018 06:30:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1517322616; cv=none;
+        d=google.com; s=arc-20160816;
+        b=xjZoZY5NygznLR91yFoSLzSMr3B30f4/QTrJVRJi0fJLiwp+n3KgtJD8lJ3WBvWYVK
+         1vNexH1jdhNqBnEM+GsVwzKRcVG2jLIwtWFpmG7COJ2qFqlQbIyHIOOxm2awjId+dZSq
+         t5SQKL7z3YG1WYDi/Jmtl/o0+Ouq+1cmEf2OEzCoY5aEmnQHMun0hdt563+I10HSf8sL
+         KYIiRXPOPV2cvEu0sRjOn8xJjA+DKEs2/LVcZtC/k73ySVKCzBFAqiu22g9e9T4FYz8x
+         iE4o0s5pR4EovoSg58UgBr16cu9cviipcglKw7ticWP4+rZ5fBiZkVrP254iKwlAzb6N
+         VhtQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:date:message-id:reply-to:to
+         :subject:from:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=gMuGxWmxu0hPGx+/s/Nxc8hwVdPcLsC2NHL+T2puo0c=;
+        b=DuANVzOKcqSLO0qaeLibM85cWJB/RroNLXDyAWW9NVze+ScPFAdXt7Atrfy/enpyVA
+         O+micDJUASXS7mdy+8L+0u50Wv2H0j+KWLNwFGyTsyWQhI+1KXAV5vVZAW4rGwxQOHT2
+         wQzE2g8EhIWGAdFy/M7xoOPwPhstgQKP7ya7lqAa9aiUCI+VNJfcvhLFj0Xi2cc3mtFO
+         +KLcXdmUgkzSq7VHGRJw2GCTQnLkFOW2bgKGNaXpMjOSsMwGvrLBTus1XQhAdAgMSXke
+         Gryxu9Ux5szSsQ1Y4PzwHeSHuPVaXEFpoDQsnbsrbS7IePMzWQ7dVyctLJWqwnnsrWjf
+         slPw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=TePrXhQl;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=HcoT+N6E;
+       spf=pass (google.com: domain of bounce-md_10559331.5a7080e0.v1-9f6947ba04be4f31a4dbc2565f1959d3@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5a7080e0.v1-9f6947ba04be4f31a4dbc2565f1959d3@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+Return-Path: <bounce-md_10559331.5a7080e0.v1-9f6947ba04be4f31a4dbc2565f1959d3@mandrillapp.com>
+Received: from mail17.us4.mandrillapp.com (mail17.us4.mandrillapp.com. [205.201.136.17])
+        by mx.google.com with ESMTPS id b65si255593qke.96.2018.01.30.06.30.15
+        for <abuse@isp.tld>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 30 Jan 2018 06:30:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-md_10559331.5a7080e0.v1-9f6947ba04be4f31a4dbc2565f1959d3@mandrillapp.com designates 205.201.136.17 as permitted sender) client-ip=205.201.136.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=TePrXhQl;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=HcoT+N6E;
+       spf=pass (google.com: domain of bounce-md_10559331.5a7080e0.v1-9f6947ba04be4f31a4dbc2565f1959d3@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5a7080e0.v1-9f6947ba04be4f31a4dbc2565f1959d3@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mandrill; d=cloudflare.com; h=From:Subject:To:Reply-To:Message-Id:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=abuse@cloudflare.com; bh=gMuGxWmxu0hPGx+/s/Nxc8hwVdPcLsC2NHL+T2puo0c=; b=TePrXhQllxu7qrCux7QnqfDMIxRDcfbXJMKFJh6cf7Tuq3VSMhkscBzyiGDKa9N5clnjnsM888u+
+   1uiTBkl8BLvAK4hKUDS6XCn/ui27PtbyYX9w9Iv9VsbB+MMTDMHL0mgdxW/qE6Ijz0SR0Xzy97cK
+   P9jGLMczHal+Y1TYAW8=
+Received: from pmta07.mandrill.prod.suw01.rsglab.com (127.0.0.1) by mail17.us4.mandrillapp.com id he20ng174e0m for <abuse@isp.tld>; Tue, 30 Jan 2018 14:30:15 +0000 (envelope-from <bounce-md_10559331.5a7080e0.v1-9f6947ba04be4f31a4dbc2565f1959d3@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com;
+  i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1517322464; h=From :
+  Subject : To : Reply-To : Message-Id : Date : MIME-Version :
+  Content-Type : Content-Transfer-Encoding : From : Subject : Date :
+  X-Mandrill-User : List-Unsubscribe;
+  bh=gMuGxWmxu0hPGx+/s/Nxc8hwVdPcLsC2NHL+T2puo0c=;
+  b=HcoT+N6Evhz4uhDqzZ7c/0pAnIczzaopyf6WHpOe1+wOFJzKLojaJZo/hBfIP0s2ETHROn EN0BFYGdk/wZjd0XKkBpCtJON3rWRE+YBjG281Mae2km86O7ZtJuRLIBMWy1BJPKPxzQjz9L cd6QFfnOYmK/0hlirqYDIJe5CN4xo=
+From: Cloudflare <abuse@cloudflare.com>
+Subject: [a967b210eeea3831]: Cloudflare received a DMCA copyright infringement complaint regarding one of your customers.
+Return-Path: <bounce-md_10559331.5a7080e0.v1-9f6947ba04be4f31a4dbc2565f1959d3@mandrillapp.com>
+Received: from [162.158.65.216] by mandrillapp.com id 9f6947ba04be4f31a4dbc2565f1959d3; Tue, 30 Jan 2018 14:27:44 +0000
+X-Php-Originating-Script: 0:email.php
+To: <abuse@isp.tld>
+Reply-To: <abusereply@cloudflare.com>
+Message-Id: <20180130143014.D436739A89BD0@smtpout1.cloudflare.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=10559331.9f6947ba04be4f31a4dbc2565f1959d3
+X-Mandrill-User: md_10559331
+Date: Tue, 30 Jan 2018 14:27:44 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Cloudflare received a DMCA copyright infringement complaint regarding:
+this-domain-isnt-real-spoon-is-a-ly.com
+
+Please be aware Cloudflare is a network provider offering a reverse proxy, pass-through security service. We are not a hosting provider. Cloudflare does not control the content of our customers.
+
+The actual host for this-domain-isnt-real-spoon-is-a-ly.com is 10.1.3.4. Using the following command, you can confirm the site in question is hosted at that IP address: curl -v -H "Host: this-domain-isnt-real-spoon-is-a-ly.com" 10.1.3.4/
+
+Below is the complaint we received:
+
+Reporter's Name: Jason Allen
+Copyright Holder's Name: 
+Reporter's Email Address: notice@dmca.pro
+Reporter's Company Name: DMCA Pro
+Reporter's Telephone Number: 865-316-6236
+Reporter's Address: 340 S Lemon Ave #7313 Walnut, CA US
+
+Reported URLs:
+
+	http://this-domain-isnt-real-spoon-is-a-ly.com/forum/viewtopic.php?t=21688&amp;dl=names&amp;spmode=full
+
+Original Work: Libra of the Vampire Princess video game
+
+
+Please address this issue with your customer.
+
+Regards,
+
+Cloudflare Abuse

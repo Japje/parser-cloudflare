@@ -1,0 +1,134 @@
+Delivered-To: abuse@isp.tld
+Received: by 10.107.44.88 with SMTP id s85csp4159051ios;
+        Tue, 3 Apr 2018 11:18:08 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx48Iz8XZP60ZtuAb+fZQ/5smBMokVnk0Nm24+fl4G97wnnUfoOthsCFGuzv9rzcuAw2UhaLQ
+X-Received: by 10.13.243.2 with SMTP id c2mr247303ywf.395.1522779488118;
+        Tue, 03 Apr 2018 11:18:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1522779488; cv=none;
+        d=google.com; s=arc-20160816;
+        b=NFy3oKQgWXFAWdw3aNtDxUOx/K4QBI3DG62CA1s/YVTv6Vi/m+vEo8LJRwpva4RS7x
+         ednibrrzCD5uZeaj+UuAhDEvcDZYtjyloMRSciFCl/q+rJjFcQcHa0Q1QBcrbDNJ/Y4J
+         odo433DCYdJEkdZL6DoX3eucvJDSqYPAfC0i6qzG+qeBw7NgUZnY+EUlSSj3s7zizTj8
+         3Vp1IpjcGMq3jLRf0aXdO+A5UqFFVGfXlhRe9dYFuO5TudKs/h1IHpprTz4MlC+s/2ni
+         hlcry8LT/iyIdrBrzhUQZvX+zT99CevXjjX0EFCkpS7H8xDhlBWCFlmNldqFPSYvg8Cj
+         or4g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:date:message-id:reply-to:to
+         :subject:from:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=fs9Uvq5xC0bIL66q+Kf/e2tyUkHQxbwcuH5Rib90zGw=;
+        b=NwsIuomaOeN8QJ1OChAf6RzC17/keU7R1HoJRHUkHHzUtsDpF3E4cGJ9F4tdekMSMA
+         mQKQozmVYZXPSU/bkZFAGOW0CQc8IGsBucpENWNJC+cPeDbIxGbGE5KnJv+mxTFz7+Q5
+         qBZdpZn13MfGVhCECoi8HT66FU+vTJ9kW0yaxUpxa3FTNF3i0eglxYOR66IXCAOjtxhq
+         yX7wMzy8pXv5AU7RsNuVEH35XUXGMqrX5cKqagNAjKFW6n09HkAR23y/ovuIjMh9bYOK
+         pIvpMPZFVYMFhOOBOzcDooM+rWrxhx/xt9VLQ39bcR/6J425u4OdUIvqNolNn2HDsjvE
+         +qaw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=YVtA8/Ly;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=bdbOrC0S;
+       spf=pass (google.com: domain of bounce-md_10559331.5ac3c55f.v1-7faac3a690d74b849524faaec7c83499@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5ac3c55f.v1-7faac3a690d74b849524faaec7c83499@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+Return-Path: <bounce-md_10559331.5ac3c55f.v1-7faac3a690d74b849524faaec7c83499@mandrillapp.com>
+Received: from mail17.us4.mandrillapp.com (mail17.us4.mandrillapp.com. [205.201.136.17])
+        by mx.google.com with ESMTPS id q63si681799ywf.509.2018.04.03.11.18.07
+        for <abuse@isp.tld>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 03 Apr 2018 11:18:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-md_10559331.5ac3c55f.v1-7faac3a690d74b849524faaec7c83499@mandrillapp.com designates 205.201.136.17 as permitted sender) client-ip=205.201.136.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@cloudflare.com header.s=mandrill header.b=YVtA8/Ly;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=bdbOrC0S;
+       spf=pass (google.com: domain of bounce-md_10559331.5ac3c55f.v1-7faac3a690d74b849524faaec7c83499@mandrillapp.com designates 205.201.136.17 as permitted sender) smtp.mailfrom=bounce-md_10559331.5ac3c55f.v1-7faac3a690d74b849524faaec7c83499@mandrillapp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=cloudflare.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mandrill; d=cloudflare.com; h=From:Subject:To:Reply-To:Message-Id:Date:MIME-Version:Content-Type:Content-Transfer-Encoding; i=abuse@cloudflare.com; bh=fs9Uvq5xC0bIL66q+Kf/e2tyUkHQxbwcuH5Rib90zGw=; b=YVtA8/LyV2hNC9FOvFqrNvisl2UQl4py8psX8ac0NIMMy4Th/ZHMfnJZZOKpU8lxMGrqLGzxoEz3
+   Aw4rmrKTFi/ClP7rjDK7x72Kc2JnS50cpuu5PrYcYQtfin32RozFcEDCpU+MmXnX1pQhmHaU4/xB
+   HCf2nRrRYrvc1N3LZnA=
+Received: from pmta07.mandrill.prod.suw01.rsglab.com (127.0.0.1) by mail17.us4.mandrillapp.com id hof2m0174e0u for <abuse@isp.tld>; Tue, 3 Apr 2018 18:18:07 +0000 (envelope-from <bounce-md_10559331.5ac3c55f.v1-7faac3a690d74b849524faaec7c83499@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com;
+  i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1522779487; h=From :
+  Subject : To : Reply-To : Message-Id : Date : MIME-Version :
+  Content-Type : Content-Transfer-Encoding : From : Subject : Date :
+  X-Mandrill-User : List-Unsubscribe;
+  bh=fs9Uvq5xC0bIL66q+Kf/e2tyUkHQxbwcuH5Rib90zGw=;
+  b=bdbOrC0S7qB0r+GigkciCyqMZKjDDMCjwnNsLrQUizG3B4xbv4pS/O0Z3lUKmXVSoYT3iT /6M+hweKu9jTTE2lY4JhyWWv+91Y38W1LTwn6gvZ+nEdpEj1EhoY1sBoIQE9nfdjUgKD+w7G vogzMm85ElgXq9R+TEkbzWgDD2h4Q=
+From: Cloudflare <abuse@cloudflare.com>
+Subject: [f85336c852481465]: Cloudflare received a DMCA copyright infringement complaint regarding one of your customers.
+Return-Path: <bounce-md_10559331.5ac3c55f.v1-7faac3a690d74b849524faaec7c83499@mandrillapp.com>
+Received: from [198.41.144.137] by mandrillapp.com id 7faac3a690d74b849524faaec7c83499; Tue, 03 Apr 2018 18:18:07 +0000
+X-Php-Originating-Script: 0:email.php
+To: <abuse@isp.tld>
+Reply-To: <abusereply@cloudflare.com>
+Message-Id: <20180403181807.70C724051AE67@smtpout1.cloudflare.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=10559331.7faac3a690d74b849524faaec7c83499
+X-Mandrill-User: md_10559331
+Date: Tue, 03 Apr 2018 18:18:07 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Cloudflare received a DMCA copyright infringement complaint regarding:
+non-existing-domain-take-blue-pill.com
+
+Please be aware Cloudflare is a network provider offering a reverse proxy, =
+pass-through security service. We are not a hosting provider. Cloudflare do=
+es not control the content of our customers.
+
+The actual host for non-existing-domain-take-blue-pill.com is 10.5.23.98. Using the following com=
+mand, you can confirm the site in question is hosted at that IP address: cu=
+rl -v -H "Host: non-existing-domain-take-blue-pill.com" 10.5.23.98/
+
+Below is the complaint we received:
+
+Reporter's Name: Sergei Poloz
+Copyright Holder's Name:=20
+Reporter's Email Address: copyright@vindex.com.ua
+Reporter's Company Name: Vindex Law Firm LLC.
+Reporter's Telephone Number: +38 (044) 379 1436
+Reporter's Address: 5 Sklyarenko str., Kiev, 04073, Ukraine Kiev, Kiev UA
+
+Reported URLs:
+
+=09http://non-existing-domain-take-blue-pill.com/384/serial-superkopy-2016-2-sezon-b/
+=09http://non-existing-domain-take-blue-pill.com/384-serial-superkopy-2016-2-sezon-c.html
+
+Original Work: Television Channel Ukraine Ltd. is the copyright holder of a=
+ll intellectual property rights in and to the following =E2=80=9CSuperKopi =
+(TV series 2016-2017, original title &#039;=D0=A1=D1=83=D0=BF=D0=B5=D1=80=
+=D0=9A=D0=BE=D0=BF=D1=8B&#039;)=E2=80=9D,  original URL (official): SuperKo=
+pi (TV series 2016-2017, original title &#039;=D0=A1=D1=83=D0=BF=D0=B5=D1=
+=80=D0=9A=D0=BE=D0=BF=D1=8B&#039;) (hereinafter =E2=80=93 =E2=80=9Ccontent=
+=E2=80=9D).
+
+We have discovered that content is used without authorization of the copyri=
+ght holder on the website non-existing-domain-take-blue-pill.com. The list of allegedly infringing URL=
+s you will find below.=20
+
+Subject to all the above, we demand TO IMMEDIATELY STOP THE USE OF CONTENT,=
+ whereas it is used unlawfully and with violation of intellectual property =
+rights of the copyright holder.=20
+
+Website operator may USE LEGAL EMBED PLAYER FROM THE OFFICIAL CHANNEL OF CO=
+PYRIGHT HOLDER IN YOUTUBE, and in such a case this letter shall be consider=
+ed as the authorization to use content on your website provided that the em=
+bed player from the official channel of the copyright holder in YouTube.=20
+
+In case of failure to comply with the above demand, gives copyright holder =
+the right to take protective measures against the party involved in the vio=
+lation of copyright holder=E2=80=99s rights, including by taking pre-action=
+ remedies via courts.=20
+
+Website operator and/or Web Hosting Company may be held liable for failing =
+to expeditiously comply with the takedown demands set forth herein.
+
+Please contact us should you have any questions.=20
+
+Documents:
+http://drive.vindex.com.ua/cz7Kop24/_C9_grayscale_POA_Vindex_TRKU_2018.pdf
+
+
+Please address this issue with your customer.
+
+Regards,
+
+Cloudflare Abuse
